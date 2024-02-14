@@ -35,6 +35,12 @@ function handleTheKeyUPEvent(event) {
     // 2.a  new life count
     const newLife = lifeCount - 1;
     lifeCountElement.innerText = newLife;
+
+    // game over for negative value
+
+    if (lifeCount === 0) {
+      gameOver();
+    }
   }
 }
 document.addEventListener("keyup", handleTheKeyUPEvent);
@@ -50,6 +56,11 @@ function continueGame() {
 
   // set background color
   setBgColor(alphabet);
+}
+
+function gameOver() {
+  hideElementById("play-scrn");
+  showElementById("result-scrn");
 }
 function playNow() {
   hideElementById("home-scrn");
