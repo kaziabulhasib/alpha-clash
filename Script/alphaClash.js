@@ -11,6 +11,11 @@
 function handleTheKeyUPEvent(event) {
   const playerPressed = event.key;
 
+  // finish the game on clickng esc key
+  if (playerPressed === "Escape") {
+    gameOver();
+  }
+
   // Get the expected to press
 
   const currentAlphabetElement = document.getElementById("set-alpha");
@@ -71,15 +76,28 @@ function continueGame() {
   setBgColor(alphabet);
 }
 
+// game over function -------
 function gameOver() {
   hideElementById("play-scrn");
   showElementById("result-scrn");
+
+  // Set final score.
+
+  const finalScore = getElementValueById("current-score");
+  setElementValueById("final-score", finalScore);
+
+  // remove background.
+
+  const lastAlphabetEl = document.getElementById("set-alpha");
+  const lastAlphabet = lastAlphabetEl.innerText;
+  removeBgColor(lastAlphabet);
 }
 function playNow() {
   // hide home screen & result screen
   hideElementById("home-scrn");
   hideElementById("result-scrn");
   showElementById("play-scrn");
+
   // set life=5 and score =0
   setElementValueById("current-life", 5);
   setElementValueById("current-score", 0);
