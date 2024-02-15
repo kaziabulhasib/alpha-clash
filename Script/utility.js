@@ -27,4 +27,18 @@ function removeBgColor(elementId) {
   element.classList.remove("bg-orange-400");
 }
 
-function gameOver(element) {}
+// get element value by id
+
+function getElementValueById(elementId) {
+  const element = document.getElementById(elementId);
+  const elementValueText = element.innerText;
+  const value = parseInt(elementValueText);
+  return value;
+}
+
+// set element value by id
+
+function setElementValueById(elementId, val) {
+  const element = document.getElementById(elementId);
+  element.innerText = val;
+}
